@@ -35,18 +35,33 @@ func internalMain() error {
 
 	for _, module := range project.Modules {
 		modules = append(modules, module)
+
+		// We prefetch the modules.
+		_, err := module.LoadUHTFiles(unreal.Platform_Windows, true)
+		if err != nil {
+			return fmt.Errorf("loading UHT files for module %q: %w", module.Name, err)
+		}
 	}
 	sort.Slice(modules, func(i, j int) bool {
 		return modules[i].Name < modules[j].Name
 	})
 
 	for _, module := range modules {
+		uhtFiles, err := module.LoadUHTFiles(unreal.Platform_Windows, false)
+		if err != nil {
+			return fmt.Errorf("loading UHT files for module %q: %w", module.Name, err)
+		}
+
 		fmt.Println("---------------------------------------------------------")
 		fmt.Println("MODULE:", module.Name)
 		fmt.Println("BASE DIR:", module.BaseDir)
 		fmt.Println("BUILD FILE:", module.BuildFile)
 		fmt.Println("FILES:", len(module.Files))
 		// for _, file := range module.Files {
+		// 	fmt.Println("-", file)
+		// }
+		fmt.Println("UHT FILES:", len(uhtFiles))
+		// for _, file := range uhtFiles {
 		// 	fmt.Println("-", file)
 		// }
 	}
