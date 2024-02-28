@@ -5,5 +5,5 @@ go 1.21
 //replace github.com/cristiandonosoc/golib => D:\projects\go\golib
 
 require (
-   github.com/cristiandonosoc/golib v0.1.5
+   github.com/cristiandonosoc/golib v0.1.6
 )
