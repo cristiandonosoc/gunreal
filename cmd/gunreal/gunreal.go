@@ -3,7 +3,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/cristiandonosoc/gunreal/cmd/gunreal/project"
 
@@ -27,19 +26,10 @@ var (
 
 func init() {
 	// TODO(cdc): Evaluate using Viper for configs.
-
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(project.ProjectSectionCmd)
 }
 
-func internalMain() error {
-	return rootCmd.Execute()
-
-}
-
 func main() {
-	if err := internalMain(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	rootCmd.Execute()
 }

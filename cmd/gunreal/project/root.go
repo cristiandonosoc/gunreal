@@ -17,9 +17,10 @@ var (
 	gGunrealConfig *gunreal_config.GunrealConfig
 
 	ProjectSectionCmd = &cobra.Command{
-		Use:   "project",
-		Short: "Commands for dealing with projects",
-		Long:  "These are all the commands that will deal with the unreal project.",
+		Use:          "project",
+		Short:        "Commands for dealing with projects",
+		Long:         "These are all the commands that will deal with the unreal project.",
+		SilenceUsage: true,
 
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			config, err := gunreal_config.LoadConfig(gFlags.configPath)
