@@ -5,7 +5,7 @@ go 1.21
 //replace github.com/cristiandonosoc/golib => D:\projects\go\golib
 
 require (
-	github.com/cristiandonosoc/golib v0.1.9
+	github.com/cristiandonosoc/golib v0.1.10
 	github.com/hashicorp/go-version v1.6.0
 	github.com/spf13/cobra v1.8.0
 	golang.org/x/sync v0.6.0
